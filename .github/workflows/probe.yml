@@ -1,0 +1,29 @@
+name: probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/probe.yml"
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - run: uname -a && echo "linux runner works"
+
+  macos14:
+    runs-on: macos-14
+    steps:
+      - run: sw_vers && xcodebuild -version && echo "macos-14 works"
+
+  macos15:
+    runs-on: macos-15
+    steps:
+      - run: sw_vers && xcodebuild -version && echo "macos-15 works"
+
+  macos13:
+    runs-on: macos-13
+    steps:
+      - run: sw_vers && echo "macos-13 works"
